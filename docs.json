@@ -7,7 +7,10 @@
     "light": "#eec9bc",
     "dark": "#4fa1ab"
   },
-  "favicon": "/favicon.svg",
+  "favicon": {
+    "light": "/images/trepzy-symbol-T.svg",
+    "dark": "/favicon.svg"
+  },
   "navigation": {
     "tabs": [
       {
