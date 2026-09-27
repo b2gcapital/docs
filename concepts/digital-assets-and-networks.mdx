@@ -1,0 +1,61 @@
+---
+title: "Digital Assets, Stablecoins, and Networks at Trepzy"
+sidebarTitle: "Digital Assets"
+description: "Define digital assets, stablecoins, and digital networks in the Trepzy context, and understand why they appear in certain cross-border operations."
+---
+
+When you see the words "digital asset" or "stablecoin" inside Trepzy's internal documentation, they refer to specific technical concepts — not a general category of investment products or speculative tokens. Understanding what these terms mean, and what they do not mean, helps you reason clearly about why certain operations work the way they do and what to say when something goes wrong along a digital rail.
+
+## Digital Asset (Ativo Digital)
+
+A **digital asset** is a value whose quantity and movement are recorded on a digital network. Instead of a bank ledger tracking who holds what, a shared digital network records the ownership and history of the asset. Anyone who can verify on that network can see that the movement happened.
+
+The key attributes you need to know for any digital asset in an operation:
+
+- **Which network** it lives on — different networks have different speeds, costs, and confirmation guarantees
+- **Which asset** — not all digital assets behave the same way, even on the same network
+- **What state** the movement is in — submitted to the network, confirmed by the network, or finalized
+
+## Stablecoin
+
+A **stablecoin** is a digital asset specifically designed to track the value of a fiat currency. A dollar-pegged stablecoin, for example, is intended to be worth approximately one US dollar at any time. This makes stablecoins useful as a mechanism for moving value across borders — you can settle a cross-border transfer in a digital unit that the recipient can then convert back to local fiat without the volatility risk of other digital assets.
+
+<Warning>
+A stablecoin is **not** the same as the fiat currency it tracks. A USD stablecoin is not a US bank deposit. It is a digital asset that attempts to maintain a one-to-one relationship with the dollar. The mechanism behind that peg — whether it is collateral, algorithmic, or a mix — varies by stablecoin. Trepzy does not endorse any particular stablecoin; the team should track which specific assets are used in partner operations and their current status.
+</Warning>
+
+## Digital Network (Rede Digital)
+
+A **digital network** is a shared system that records and confirms operations of certain digital values. When Trepzy (or its partner BlindPay) sends a digital asset, the instruction goes to this network, which confirms and finalizes the movement. Confirmation on a digital network is the equivalent of a bank's settlement confirmation on a traditional rail — it is the moment you can treat the movement as having actually happened.
+
+Different networks have different:
+
+- **Confirmation times** — some networks finalize in seconds; others require multiple confirmation cycles
+- **Cost structures** — most networks charge a fee per transaction, sometimes called a "gas fee" or network fee
+- **Asset compatibility** — a given stablecoin exists on specific networks; you cannot send it on a network that does not support it
+
+## Why Trepzy uses digital assets
+
+Trepzy's core use case is cross-border financial operations — receiving, holding, and moving value between countries. Digital assets, specifically stablecoins, can serve as a bridging mechanism between banking rails in one country and banking rails in another. Moving a stablecoin on a digital network can be faster and more cost-efficient for certain corridors than routing through multiple correspondent banks on a traditional SWIFT path.
+
+<Note>
+This is a means, not an end. The customer's goal is to receive or send value in a specific currency. Whether a stablecoin was involved in the path is a technical detail of the rail, not a feature the customer is necessarily aware of or interested in.
+</Note>
+
+## Customers and digital assets: what the customer sees
+
+The presence of digital assets in an operation does not automatically mean the customer interacts with them directly. Trepzy may use a stablecoin internally as part of a rail — for example, in the cross-border receiving flow via BlindPay — without the customer ever needing to create a wallet, hold a stablecoin balance, or understand the network mechanics.
+
+<Accordion title="When does a customer directly interact with digital assets?">
+In the current Trepzy architecture, most customers experience digital assets only indirectly — as an internal step in a cross-border operation. Direct customer interaction (such as viewing a wallet address or managing a digital asset balance) is part of the wallet and address layer. See [Wallets and Addresses](/concepts/wallets-and-addresses) for when and how that layer becomes visible.
+</Accordion>
+
+## Current focus
+
+Digital assets appear primarily in the **cross-border receiving and sending paths** enabled via BlindPay. This is the confirmed scope today. Other potential uses of digital assets — such as yield, direct customer-held asset wallets, or additional stablecoin types — are not part of the current product and should not be presented as available or imminent without explicit confirmation from the product team.
+
+| Concept | Status |
+|---------|--------|
+| Stablecoins as internal cross-border rail (via BlindPay) | **Available now** (for eligible operations) |
+| Customer-facing digital asset balances | **Under study** |
+| Support for additional digital networks or asset types | **Under study** |

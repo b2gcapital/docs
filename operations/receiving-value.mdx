@@ -1,0 +1,64 @@
+---
+title: "Receiving Value into Your Trepzy Global Account"
+sidebarTitle: "Receiving"
+description: "Learn how a customer receives value into a Global Account — from getting receiving details approved to confirming that funds have arrived and are available."
+---
+
+Receiving value into Trepzy is a multi-step process that goes well beyond simply opening an account. Before any payer can send funds and before you can confirm that money is available, several distinct approvals must be in place — each one a separate gate. Understanding these stages is essential for setting accurate expectations with customers and for troubleshooting when something appears to stall.
+
+## What "receiving" actually means in Trepzy
+
+A Global Account is an account organised around a specific currency (for example, USD or EUR). Having an open account does not automatically mean you have approved receiving details for that currency. **Receiving details** are the banking coordinates a payer uses to route funds to you, and they require their own approval from Trepzy's financial partners — most often BlindPay — before they become valid.
+
+<Note>
+Opening a Global Account and receiving approval for that account's receiving details are two separate steps. One does not imply the other.
+</Note>
+
+## Steps to receive value
+
+<Steps>
+  <Step title="Open a Global Account for the relevant currency">
+    The customer must have an active Global Account in the currency they intend to receive. This is the starting point, not the finishing line.
+  </Step>
+  <Step title="Complete required verification (KYC/KYB)">
+    Before a receiving arrangement can be approved, the customer — whether an individual or a business — must pass identity and compliance checks. If verification is not yet complete, the receiving details will not be issued. Do not skip ahead.
+  </Step>
+  <Step title="Receive approval for that currency's receiving details">
+    Once verification passes, Trepzy coordinates with the relevant financial partner (e.g., BlindPay) to analyse and issue the receiving details for that specific currency and account holder. This partner approval is a distinct step: **a successful document check does not automatically produce receiving details**.
+  </Step>
+  <Step title="Share those details with the payer">
+    Only after the receiving details are approved should the customer share them with the payer. Sharing unapproved or provisional details risks a failed or misrouted transfer.
+  </Step>
+  <Step title="Monitor the operation state">
+    Once the payer initiates a transfer, track the operation state in Trepzy. There are three meaningfully different moments — and they are not the same:
+
+    | State | What it means |
+    |---|---|
+    | Payment initiated | The payer has sent the funds; Trepzy and/or the partner are monitoring |
+    | Payment arrived | The partner has received confirmation of the transfer |
+    | Funds available | The value has been credited and the customer can use it |
+  </Step>
+</Steps>
+
+## What Trepzy does behind the scenes
+
+When a payer sends funds, Trepzy coordinates with BlindPay (or the relevant partner for that currency path) to receive the value, confirm that the transfer has cleared, and update the account state accordingly. The customer sees a simplified status; internally, Trepzy is assembling confirmations from multiple parties before declaring any state final.
+
+This is what Trepzy calls **orchestration**: the customer does not need to track BlindPay, the receiving bank, or any intermediate step. Trepzy holds the whole picture together and reflects an accurate state in the customer's account.
+
+## What the customer sees vs. what happens internally
+
+<CardGroup cols={2}>
+  <Card title="Customer view" icon="eye">
+    A status label — **Pending**, **Received**, or **Available** — alongside any action required from them.
+  </Card>
+  <Card title="Internal view" icon="gear">
+    Partner confirmations, network responses, and internal state transitions that must all resolve before the customer-facing status advances.
+  </Card>
+</CardGroup>
+
+Trepzy must never present a partial result as a final one. A partner confirmation that a transfer is in transit is not the same as confirming funds are available.
+
+<Warning>
+Do not tell a payer — or a customer — that funds are available until the operation status explicitly shows **Available**. A status of **Pending** means the process is still in progress. Acting on a pending state as though it were final can cause confusion, duplicate actions, and real financial harm.
+</Warning>

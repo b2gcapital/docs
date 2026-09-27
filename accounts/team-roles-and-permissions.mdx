@@ -1,0 +1,98 @@
+---
+title: "Team Roles and Permissions in Trepzy Business Accounts"
+sidebarTitle: "Roles & Permissions"
+description: "The roles a team member can hold within a Trepzy business account, what each role can and cannot do, and how permissions are scoped to a specific account context."
+---
+
+Within a business Conta Trepzy, different people can have very different levels of access. Understanding these roles is critical for the Trepzy team — both when onboarding a new company and when a customer asks why a particular person cannot take a particular action. Permissions are not global: they are scoped to a specific account, for a specific action, evaluated at a specific moment.
+
+## Roles Within a Business Conta Trepzy
+
+The table below describes the main categories of participant in a business account, what they can do, and the limits that apply to each.
+
+| Role | What they can do | What they cannot assume |
+|---|---|---|
+| **Registration initiator** | Start the account opening process and provide initial company information. | Does not become the permanent decision-maker for the account going forward. |
+| **Company representative** | Confirm information or accept terms, within the scope of a valid and verified authorization. | A job title written in a form alone does not constitute proof of authorization. |
+| **Team member** | View account activity, prepare operations, or approve actions according to their assigned access level. | An invitation to join an account does not automatically open all features or all operations. |
+| **Counterparty** | Appears as the other end of an operation — the sender or recipient of a transfer. | Their data must match the conditions established for that specific service and operation. |
+
+<Note>
+  The Trepzy team also participates — tracking pending items, analyzing cases, and helping customers. However, Trepzy staff do not substitute for the authorizations that must come from the account holder or authorized representative. Internal access does not override the authorization structure.
+</Note>
+
+## Permissions Are Scoped to a Specific Account
+
+Having access to one Conta Trepzy does not grant access to any other. Each account context is isolated:
+
+- A team member with full access to Company A's account has zero automatic access to Company B's account.
+- A person who holds a personal Conta Trepzy does not inherit any permissions in any business account they may later join.
+- Switching to a different account context in the app is a navigation action — it does not transfer permissions or funds.
+
+Every action a person takes is evaluated against the permissions they hold **in that account, at that moment**.
+
+## Sensitive Operations May Require a Second Approver
+
+For operations involving value movement, Trepzy may require a second layer of human approval before execution proceeds. A common pattern looks like this:
+
+<Steps>
+  <Step title="Team member prepares the operation">
+    A team member with the appropriate access composes a transfer — specifying origin, destination, asset, amount, and any other required details.
+  </Step>
+  <Step title="Representative or authorized approver reviews">
+    A person with the authorization to approve that type of operation reviews the prepared instruction and confirms it.
+  </Step>
+  <Step title="Technical authorization is confirmed">
+    The underlying wallet or financial mechanism confirms the specific instruction. Changing important details after approval requires starting the authorization process again.
+  </Step>
+  <Step title="Operation executes">
+    With all authorization layers satisfied, the operation proceeds. The result is recorded and visible within the account context.
+  </Step>
+</Steps>
+
+<Warning>
+  Preparing an operation does not execute it. And approving an operation in Trepzy does not replace the technical confirmation required by the financial mechanism that carries it out. These are separate steps, and each must be completed correctly for value to move.
+</Warning>
+
+## Revoking Access Does Not Affect Company Resources
+
+If a team member's access is revoked — because they have left the company or their role has changed — the company's account and resources are unaffected:
+
+- The account balance remains unchanged.
+- Pending operations continue to follow their existing authorization state.
+- Other team members with appropriate access continue operating normally.
+
+<Tip>
+  When a team member leaves and their access is revoked, verify whether any pending operations they prepared still require their participation to complete. If a second approver is needed for a queued transfer, confirm that an authorized person is available to fulfill that step.
+</Tip>
+
+## A Person Can Hold Multiple Roles Across Accounts
+
+The same individual may simultaneously hold different roles in different account contexts. For example:
+
+- Ana is the holder of her personal Conta Trepzy.
+- Ana is also a team member in Aurora's business Conta Trepzy, where she can prepare but not approve transfers.
+- Ana is a company representative in a second business, where she has verified authorization to accept terms.
+
+<Accordion title="How to think about multi-role individuals">
+  Each of Ana's roles exists independently. When she acts in Aurora's account, her personal account permissions are irrelevant. When she acts as a representative in the second business, her team-member access in Aurora is irrelevant. The question is always: **in this account, with this role, for this action — does Ana have the necessary authorization?**
+
+  The same principle applies when Trepzy support staff review a case. Always identify the account context first, then the role of the person involved, then the action being requested.
+</Accordion>
+
+## Quick Role Reference
+
+<CardGroup cols={2}>
+  <Card title="Registration Initiator" icon="pencil">
+    Opens the account onboarding process. Does not retain decision-making authority by default after submission.
+  </Card>
+  <Card title="Company Representative" icon="user-tie">
+    Acts on behalf of the company within a verified authorization. Title alone is not proof of authorization.
+  </Card>
+  <Card title="Team Member" icon="users">
+    Operates within scoped access. Can view, prepare, or approve depending on what their access level permits.
+  </Card>
+  <Card title="Counterparty" icon="arrow-right-arrow-left">
+    The other party in an operation. Their data must satisfy the conditions of the specific service being used.
+  </Card>
+</CardGroup>

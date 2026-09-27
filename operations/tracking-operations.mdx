@@ -1,0 +1,61 @@
+---
+title: "Tracking Operations: How to Follow Any Trepzy Transfer"
+sidebarTitle: "Tracking"
+description: "Understand how Trepzy represents operation state to customers and team, what each status means, and how to identify the next action required for any transfer."
+---
+
+Every operation in Trepzy has a state that reflects what has **actually happened** — not merely what was requested. This distinction matters: a customer who submits a send request has not yet sent money; a business that receives receiving details has not yet received funds. The state Trepzy shows must be grounded in confirmed results from all parties involved, not in the initiation of a request.
+
+## What the customer should always be able to see
+
+At any point in an operation, the customer must be able to answer two questions without guessing:
+
+1. **What is the current state of this operation?** — not a generic "processing" label, but a meaningful status that reflects where the operation actually stands.
+2. **Is there anything I need to do right now?** — if action is required from the customer, that must be clearly surfaced alongside the state.
+
+If neither question can be answered from the current view, the presentation of that operation needs to be improved.
+
+## What the team needs to know
+
+The internal team needs a slightly different set of information for each operation:
+
+- **Who is currently analysing the case** — which team member or partner has responsibility right now.
+- **Who must act next to resolve it** — the next accountable party, whether that is the customer, a Trepzy team member, or a financial partner.
+
+This clarity prevents operations from sitting unresolved because everyone assumed someone else was handling it.
+
+## Operation states and what they mean
+
+| State | What it means | Who acts next |
+|---|---|---|
+| **Pending** | Trepzy or a partner is actively processing the operation | Internal team monitors; no customer action typically needed |
+| **Action required** | The customer must provide information, a document, or a confirmation | Customer |
+| **Completed** | All steps have been confirmed by all parties | No action needed |
+| **Failed** | The operation did not complete successfully | Customer contacts support, or the system retries where applicable |
+
+<Note>
+These states are a guide to the categories of status you will encounter. The exact labels shown in Trepzy's interface may differ. Always refer to the operation's displayed status rather than assuming the state from timing alone.
+</Note>
+
+## Trepzy's responsibility: coherent, accurate state
+
+Trepzy coordinates results from multiple companies — identity verification partners, financial infrastructure providers, banking partners — and is responsible for presenting the customer with a single, accurate picture of where their operation stands.
+
+This means Trepzy must **not conflate partial results with complete ones**. Two common mistakes to avoid:
+
+<CardGroup cols={2}>
+  <Card title="Document verification ≠ partner approval" icon="triangle-exclamation">
+    A successful identity check confirms who the customer is. It does not confirm that the financial partner has approved the service or issued the receiving details. Both steps must complete before the state advances.
+  </Card>
+  <Card title="Request received ≠ recipient paid" icon="triangle-exclamation">
+    A confirmation that a send request was accepted by Trepzy is not a confirmation that the recipient received the funds. Wait for the partner's result before updating the operation state.
+  </Card>
+</CardGroup>
+
+## Following up on an operation
+
+<Tip>
+When following up on any operation — whether in a customer conversation or an internal investigation — use the operation's **unique identifier**. Looking up the same operation by its ID avoids accidentally creating a duplicate record and keeps the history coherent.
+</Tip>
+
+If you cannot find a result for the original operation, the correct next step is to continue tracking it — not to initiate a new one. Duplicate operations, especially outgoing sends, carry real financial risk.

@@ -1,0 +1,79 @@
+---
+title: "Digital Signatures: Technical Proof of Authorization"
+sidebarTitle: "Digital Signatures"
+description: "Learn what a digital signature is in the Trepzy context, what it must be bound to, how the two signing modes work, and what to do when signing fails."
+---
+
+Approval from the right people is a necessary condition for a Trepzy operation — but it is not sufficient on its own. The network that holds the digital value needs a separate, cryptographic proof before it will accept and record any instruction. That proof is the **digital signature**.
+
+## What a digital signature is
+
+A **digital signature** (*assinatura digital*) is the technical proof that confirms a specific instruction on a digital network was authorized. It is not a visual signature, a PIN, or a click on a button. It is a cryptographic output produced by the wallet's key material, tied to the exact content of the instruction being authorized.
+
+For a digital signature to be valid in the Trepzy context, it must be bound to all five of the following elements:
+
+| Element | Why it matters |
+|---|---|
+| **Origin** | Identifies which wallet is sending |
+| **Destination** | Identifies where value is going |
+| **Asset** | Specifies which currency or token |
+| **Amount** | Specifies how much |
+| **Network** | Specifies the infrastructure processing the movement |
+
+<Warning>
+If any of these elements changes materially after a signature has been produced — for example, the destination address is corrected, the amount is revised, or a different asset is selected — the previous signature is no longer valid. Re-authorization is required from the beginning.
+</Warning>
+
+## The two signing modes
+
+Trepzy supports two ways for a wallet to confirm an instruction. Which mode applies depends on how the account and wallet have been configured.
+
+### Interactive signing
+
+In **interactive signing** (*assinatura interativa*), the person is present in the app at the moment the instruction is submitted and participates directly in the signing process. The signature is produced in real time, in response to that specific instruction.
+
+Use cases where interactive signing is typical:
+- One-off, high-value, or sensitive transfers
+- Operations where the account requires real-time human presence as a control
+
+### Delegated access
+
+In **delegated access** (*acesso delegado*), the person previously granted a bounded permission for a service to participate in signing on their behalf. The delegation is explicit, scoped to defined conditions, and recorded before the operation takes place.
+
+<Note>
+Trepzy's current preferred path for both personal and business wallets is delegated access. This is a deliberate product direction, not a fallback option.
+</Note>
+
+**Important limits on delegated access:**
+
+- Delegating signing access is **not** the same as accepting any future payment. The delegation covers defined conditions only.
+- A scheduled send must preserve the exact value, destination, asset, and timing that were authorized at the time of delegation. If any material element changes, a new confirmation from the person is required.
+- Creating, activating, revoking, and recovering delegated access are all separate, distinct steps — each with its own flow and its own record.
+
+## When the wallet cannot confirm
+
+If the wallet is unable to confirm an instruction, the operation must either remain in a clearly pending state or fail with an explicit, visible error. Trepzy must never silently substitute a different control method from the one that was agreed with the customer.
+
+<Warning>
+Do not treat a failed or missing signature as a recoverable edge case to paper over with a workaround. The absence of a valid signature means the network cannot and should not process the instruction. Surface this clearly to the team handling the operation.
+</Warning>
+
+## The three-layer distinction you must internalize
+
+These three concepts describe different things and must never be collapsed into one:
+
+<Steps>
+  <Step title="Approval">
+    The action is permitted by the applicable people and rules — Trepzy-side rights have been verified and any required human approvers have confirmed.
+  </Step>
+  <Step title="Digital signature">
+    The technical proof the network needs to accept the instruction — produced by the wallet's key material and bound to the exact content of the instruction.
+  </Step>
+  <Step title="Network confirmation">
+    What actually happened to the digital value — the outcome recorded by the underlying network after it processed the instruction.
+  </Step>
+</Steps>
+
+<Note>
+If the operation involves a subsequent bank transfer, that transfer will produce its own independent result on top of these three layers. All four outcomes are distinct and must be tracked separately.
+</Note>

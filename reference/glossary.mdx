@@ -1,0 +1,155 @@
+---
+title: "Trepzy Glossary: Key Terms and Definitions"
+sidebarTitle: "Glossary"
+description: "A quick-reference index of every key Trepzy term — from Conta Trepzy to digital signatures — with short definitions and pointers to deeper explanations."
+---
+
+This glossary collects the core vocabulary you'll encounter throughout the Trepzy knowledge base. You don't need to memorize everything here before you start reading — each term is introduced in context the first time it appears. Come back to this page whenever you need a fast reminder or want to jump directly to the deeper explanation for a concept.
+
+<Note>
+  Definitions here are concise by design. Every entry points to the section of the knowledge base where the concept is explained with examples and operational context.
+</Note>
+
+## Accounts and structure
+
+<Accordion title="Conta Trepzy">
+  **Definition:** The relationship between a person or company and Trepzy, under which their resources and access are organized. A single individual can hold a personal Conta Trepzy and also participate in a company's Conta Trepzy — each with its own access rules and resources.
+
+  **Go deeper:** See *Who is the account holder* (party-user-holder) for how Trepzy models the titular, authorized users, and delegated access within a single Conta Trepzy.
+</Accordion>
+
+<Accordion title="Conta global (Global Account)">
+  **Definition:** An account organized around a specific currency — currently planned for USD, EUR, and BRL — each with its own resources and conditions. Opening a global account, having an approved receiving address, and seeing a confirmed deposit are three separate events.
+
+  **Go deeper:** See *Global Account* (conta-global) for what is decided, what is in preparation, and what has been confirmed in practice for each currency.
+</Accordion>
+
+## Money and rails
+
+<Accordion title="Moeda (Currency)">
+  **Definition:** The unit in which a value is expressed — for example, the Brazilian real (BRL) or the US dollar (USD). The currency of a balance always needs to be stated explicitly; a balance without a stated currency is incomplete information.
+
+  **Go deeper:** See *Money and paths* (dinheiro-e-trilhos) for how Trepzy handles multiple currencies and what changes when a conversion is involved.
+</Accordion>
+
+<Accordion title="Trilho (Rail)">
+  **Definition:** The path through which a transfer moves, with its own rules, participants, and processing times. Different rails — such as SWIFT, Pix, or a digital-asset network — have different costs, speeds, and eligibility criteria.
+
+  **Go deeper:** See *Fiat rails and bank accounts* (trilhos-fiat-e-contas-bancarias) for how Trepzy chooses and monitors rails for a given operation.
+</Accordion>
+
+<Accordion title="Cotação (Quote)">
+  **Definition:** The conditions presented for an exchange or operation — including amounts, fees, exchange rates, and how long the quote remains valid. Accepting a quote is a separate step from requesting one; a quote that expires must be refreshed before you can act on it.
+
+  **Go deeper:** See *Money and paths* (dinheiro-e-trilhos) for how quotes are generated, displayed, and invalidated.
+</Accordion>
+
+<Accordion title="Saldo (Balance)">
+  **Definition:** The quantity observed in a resource at a given moment. A balance is only meaningful when you also know its currency, its state (e.g., pending vs. confirmed), and when it was last updated.
+
+  **Go deeper:** See *Balance and statement* (saldos-extratos-e-custodia) for how Trepzy stores, updates, and presents balance information to the customer.
+</Accordion>
+
+<Accordion title="Extrato (Statement)">
+  **Definition:** The history of entries, exits, and known states of an account or resource over time. A statement is the audit trail that lets the customer — and the Trepzy team — reconstruct what happened and when.
+
+  **Go deeper:** See *Balance and statement* (saldos-extratos-e-custodia) for statement structure, update frequency, and what each line item represents.
+</Accordion>
+
+## Digital assets and networks
+
+<Accordion title="Ativo digital (Digital asset)">
+  **Definition:** A value whose quantity and movement are recorded on a digital network rather than in a traditional banking ledger. Possession and transfer are controlled through cryptographic keys rather than bank authorization alone.
+
+  **Go deeper:** See *Digital values and networks* (cripto-e-redes) for how digital assets are held, moved, and reconciled within Trepzy's orchestration model.
+</Accordion>
+
+<Accordion title="Stablecoin">
+  **Definition:** A digital asset designed to track the value of a reference currency (for example, a USD-pegged stablecoin aims to hold a 1:1 value with the US dollar). The peg is a design goal, not a guarantee, and different stablecoins use different mechanisms to maintain it.
+
+  **Go deeper:** See *Currency-linked assets* (stablecoins-e-ativos) for the stablecoins currently used in Trepzy operations and the risks the team should understand.
+</Accordion>
+
+<Accordion title="Rede digital (Digital network)">
+  **Definition:** A shared system that records and confirms operations involving certain digital values. Examples include public blockchains and permissioned ledgers. Each network has its own confirmation times, fee structure, and finality model.
+
+  **Go deeper:** See *Digital values and networks* (cripto-e-redes) for the networks relevant to current Trepzy operations.
+</Accordion>
+
+<Accordion title="Carteira digital (Digital wallet)">
+  **Definition:** The tool and associated control layer used to receive, inspect, and authorize movement of digital values. A wallet does not "store" assets the way a physical wallet stores cash — it holds the keys that prove control over an address on a digital network.
+
+  **Go deeper:** See *Wallets* (wallets) for how Trepzy manages wallet infrastructure and what custody means in this context.
+</Accordion>
+
+<Accordion title="Endereço (Address)">
+  **Definition:** The identifier used to receive or send value on a digital network — analogous to a bank account number, but specific to a single network. An address on one network cannot receive assets from a different network.
+
+  **Go deeper:** See *Wallets* (wallets) for how addresses are generated, assigned, and displayed to customers.
+</Accordion>
+
+<Accordion title="Assinatura digital (Digital signature)">
+  **Definition:** A cryptographic proof that a specific instruction on a digital network was authorized by the holder of the relevant key. A valid digital signature confirms authorization without revealing the private key itself.
+
+  **Go deeper:** See *Authorization* (assinaturas-e-autorizacao) for how Trepzy uses digital signatures in its signing flows, including interactive signing.
+</Accordion>
+
+## Compliance and identity
+
+<Accordion title="Verificação de identidade (Identity verification)">
+  **Definition:** The process of confirming who a person or company is and that the evidence they provide is authentic. Trepzy uses a specialized partner to perform document and biometric checks — but a positive result from that partner is not, on its own, sufficient for Trepzy's full approval of an account or operation.
+
+  **Go deeper:** See *Why we verify* (compliance-e-verificacao) for the full identity verification flow, what each result means, and what must still happen after a positive check.
+</Accordion>
+
+<Accordion title="KYC — Know Your Customer">
+  **Definition:** The regulatory and operational requirement to identify and verify individual customers before providing financial services to them. KYC sets a minimum standard for what Trepzy (and its partners) must confirm about a person before certain operations are permitted.
+
+  **Go deeper:** See *Why we verify* (compliance-e-verificacao) for Trepzy's KYC process, required documents, and how the results flow into account and operation approval.
+</Accordion>
+
+<Accordion title="KYB — Know Your Business">
+  **Definition:** The equivalent of KYC for legal entities. KYB requires Trepzy to verify the company's registration, legal structure, beneficial ownership, and purpose before enabling business account features.
+
+  **Go deeper:** See *Why we verify* (compliance-e-verificacao) for how KYB differs from KYC in required documents and review steps.
+</Accordion>
+
+<Accordion title="AML — Anti-Money Laundering">
+  **Definition:** The set of legal requirements, processes, and controls designed to prevent the financial system from being used to legitimize the proceeds of illegal activity. AML obligations apply continuously — not only at account opening — and can affect whether a specific transaction is permitted.
+
+  **Go deeper:** See *Why we verify* (compliance-e-verificacao) for the AML controls applied at Trepzy and how partner-level AML results interact with Trepzy's own decisions.
+</Accordion>
+
+<Accordion title="Compliance">
+  **Definition:** The ongoing practice of operating in accordance with applicable laws, regulations, partner requirements, and internal policies. At Trepzy, compliance is not a one-time gate — it applies to each operation, and the team must understand which rules apply to each step of a journey.
+
+  **Go deeper:** See *Why we verify* (compliance-e-verificacao) for how compliance requirements are built into product flows.
+</Accordion>
+
+## Access and authorization
+
+<Accordion title="Acesso delegado (Delegated access)">
+  **Definition:** Permission granted by an account holder for another person to act on their behalf within a Conta Trepzy. Delegated access has defined scope — it does not make the delegate the account holder, and the holder retains responsibility.
+
+  **Go deeper:** See *Who is the account holder* (party-user-holder) for the access model, how permissions are granted and revoked, and what each access level allows.
+</Accordion>
+
+<Accordion title="Assinatura interativa (Interactive signing)">
+  **Definition:** A signing flow in which the authorized party actively confirms a specific instruction — for example, reviewing and approving a transaction in real time — rather than relying on a pre-authorized standing permission. Interactive signing creates an explicit audit event tied to the authorizing party.
+
+  **Go deeper:** See *Authorization* (assinaturas-e-autorizacao) for when interactive signing is required versus when a pre-authorization is sufficient.
+</Accordion>
+
+## Orchestration
+
+<Accordion title="Parceiro (Partner)">
+  **Definition:** An external company that provides a specific part of a service used by Trepzy. A partner is not a Trepzy shareholder, a member of the customer's team, or a company selling through the platform. Each partner has its own acceptance criteria, limits, and results — a partner approving their piece of an operation does not mean the full operation is approved.
+
+  **Go deeper:** See *How Trepzy orchestrates an operation* (o-que-orquestramos) for the full partner model and the current list of named partners.
+</Accordion>
+
+<Accordion title="Orquestração (Orchestration)">
+  **Definition:** The coordination of multiple steps — across Trepzy's own systems and external partners — into a single operation that the customer can initiate, track, and act on in one place. Trepzy uses this term to describe its role as the connector between specialized services, not as a claim to own or control all of the underlying infrastructure.
+
+  **Go deeper:** See *How Trepzy orchestrates an operation* (o-que-orquestramos) for a full breakdown of what orchestration means operationally and what stays Trepzy's responsibility regardless of which partner executes a step.
+</Accordion>

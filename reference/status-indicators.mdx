@@ -1,0 +1,106 @@
+---
+title: "Operation Status Labels and What They Mean in Trepzy"
+sidebarTitle: "Status Labels"
+description: "Every status label used in Trepzy — for features (Available now, In preparation, Under study) and for operations (pending, completed, failed) — defined for consistent team use."
+---
+
+Trepzy uses two distinct sets of status labels: one for describing the availability of product **features** in this knowledge base and in internal documentation, and another for the **state of a financial operation** as it moves through Trepzy's systems and partner steps. Using these labels consistently — and not substituting your own — is what keeps the knowledge base trustworthy and prevents customers from receiving misleading information about where their money is.
+
+<Note>
+  If you are writing a page that describes a feature, always pick one of the three feature status labels below and state it explicitly. If you are describing a transaction state, use only the operation state labels. Never blend the two sets.
+</Note>
+
+---
+
+## Feature status labels
+
+These labels appear throughout this knowledge base and in product documentation to describe what a feature can — and can't — do right now. They answer the question: *"Can I use this today?"*
+
+<CardGroup cols={2}>
+  <Card title="✅ Available now" icon="circle-check">
+    A feature that an authorized person can use under the stated conditions. "Available" does not mean available to everyone — a feature can be live for a small pilot group while still being unavailable to the general customer base. Always state the conditions: who can use it, in which currency or country, and under what account type.
+  </Card>
+  <Card title="🔧 In preparation" icon="wrench">
+    Trepzy is actively building or adjusting this feature. Part of it may already appear on screen or work in a testing environment, but the complete journey is not yet ready for customers to rely on. Do not describe an "in preparation" feature as available, even if a demo works.
+  </Card>
+  <Card title="🔍 Under study" icon="magnifying-glass">
+    A possibility exists, but key decisions have not been made — including the final format, which company would be responsible, what it would cost, and when it might ship. Do not present an "under study" item as a committed roadmap feature or as something a customer can request.
+  </Card>
+  <Card title="Why this matters" icon="triangle-exclamation">
+    These three states exist because different parts of the same journey can have different statuses. For example: requesting a USD account might be **available now**, while receiving a wire into it is **in preparation**, and paying out via card is **under study**. Each step needs its own label.
+  </Card>
+</CardGroup>
+
+<Warning>
+  Never use "available now" for a feature simply because a partner company *could* provide it, or because it appeared in a commercial presentation. A feature is "available now" only when Trepzy has confirmed it works end-to-end for the customer segment you're documenting.
+</Warning>
+
+---
+
+## Operation state labels
+
+These labels describe the state of a financial operation — what the customer sees in their Conta Trepzy and what the team tracks internally. They answer the question: *"What is happening to this transaction right now?"*
+
+<Accordion title="Pending">
+  The operation is in progress. Either Trepzy or one of its partners is processing it, and no customer action is needed at this moment. The operation should remain in this state until it either completes, fails, or transitions to "Action required."
+
+  **Key rule:** Do not leave an operation in "Pending" indefinitely without an internal owner tracking it. If a response from a partner is delayed, the team needs to know — even if the customer-facing state hasn't changed yet.
+</Accordion>
+
+<Accordion title="Action required">
+  The operation cannot continue until the customer or a team member provides something — a document, a confirmation, a corrected detail. The customer-facing message must clearly state what is needed and, where possible, provide a direct path to complete the action.
+
+  **Key rule:** "Action required" must always be accompanied by a specific instruction. A state of "Action required" with no explanation visible to the customer is a product defect.
+</Accordion>
+
+<Accordion title="Completed">
+  All steps have been confirmed. The value has moved as intended and the operation is closed. A "Completed" state is final — do not use it until every required confirmation has been received, including from all relevant partners.
+
+  **Key rule:** See the important distinction below between "request confirmed" and "transfer completed."
+</Accordion>
+
+<Accordion title="Failed">
+  The operation did not complete. The customer must see a clear explanation of what went wrong and what their options are — whether that means retrying, providing new information, or contacting support.
+
+  **Key rule:** A "Failed" state without a visible explanation and next steps is a product defect. Internally, a failed operation must also have a recorded reason so the team can identify patterns and fix root causes.
+</Accordion>
+
+---
+
+## Critical distinctions
+
+These two pairs of concepts are frequently confused. Getting them wrong leads to customers believing their money has arrived when it hasn't — which erodes trust and can trigger support escalations.
+
+<Warning>
+  **"Received" ≠ "Available"**
+
+  A value being received by Trepzy's system — or by a partner's system — is not the same as that value being available for the customer to use. Receiving is the arrival of the value at an intermediate point in the journey. Available means the customer can act on it: transfer it, convert it, or withdraw it. The gap between the two can range from seconds to business days, depending on the rail, the currency, and the compliance checks required.
+
+  Always specify which state you mean. Do not write "the customer received their funds" if the correct state is "Trepzy received the incoming transfer and is processing it."
+</Warning>
+
+<Warning>
+  **"Request confirmed" ≠ "Transfer completed"**
+
+  A confirmation that Trepzy received the customer's request to send money is not a confirmation that the recipient has received the money. These are different events that may be separated by minutes, hours, or — in cross-border scenarios — days. The operation state the customer sees must reflect the actual state of the transfer, not just the state of their request.
+
+  Do not display or communicate "Completed" until all steps — including the recipient-side confirmation — have been verified.
+</Warning>
+
+---
+
+## Quick reference
+
+| Label | Used for | Means |
+|---|---|---|
+| **Available now** | Features | Works end-to-end for the stated conditions and audience |
+| **In preparation** | Features | Being built; not yet ready for customer-facing use |
+| **Under study** | Features | Possible but no committed decisions yet |
+| **Pending** | Operations | In progress; no customer action needed right now |
+| **Action required** | Operations | Customer or team must provide something to continue |
+| **Completed** | Operations | All steps confirmed; value has moved as intended |
+| **Failed** | Operations | Did not complete; customer must see explanation and next steps |
+
+<Tip>
+  When in doubt about which label to apply, ask: *"If the customer read this label right now, would they have an accurate understanding of what is happening?"* If the answer is no, reconsider the label or add the context that makes it accurate.
+</Tip>

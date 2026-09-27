@@ -1,0 +1,89 @@
+---
+title: "Understanding Balances and Statements Inside Trepzy"
+sidebarTitle: "Balances"
+description: "Learn what balance and statement mean in Trepzy, why currency, status, and update time matter, and how to use the statement as your source of truth."
+---
+
+A balance figure on a screen looks simple — it is a number. But in Trepzy's context, that number means very little without three additional pieces of information: which currency it is in, what status it represents, and when it was last updated. Getting these wrong leads to incorrect support responses, misread dashboards, and customers being told value is available when it is not. This page defines balance and statement precisely and explains how to use them correctly.
+
+## Balance (Saldo)
+
+A **balance** is the amount observed in a resource at a point in time. For a balance to be meaningful, you need to know:
+
+- **Currency** — a balance of 500 means something very different in USD versus BRL. Global Accounts have separate balances; they are never combined automatically.
+- **Status** — a *pending* balance and an *available* balance are not the same thing. Value may have arrived but not yet cleared; that value is not yours to move until its status is *available*.
+- **Last update time** — a balance that was accurate ten minutes ago may not reflect a transfer that completed two minutes ago. Always note when the balance was last refreshed before acting on it.
+
+<Warning>
+A value can be "received" — meaning the inbound transfer has been registered — without being "available" — meaning the customer can actually move it. These are different states. Do not treat a pending balance as usable funds when responding to customer inquiries or making product decisions.
+</Warning>
+
+### Balance states you will encounter
+
+| State | Meaning |
+|-------|---------|
+| **Pending** | A value has been signaled or is in transit but has not yet been confirmed as settled. |
+| **Available** | The value has been confirmed and the customer may act on it (subject to applicable permissions and limits). |
+| **Reserved** | A portion of the balance is locked for an in-progress operation and cannot be used for other purposes until that operation resolves. |
+
+### Balances are per Global Account
+
+Each Global Account — USD, EUR, BRL — has its own independent balance. There is no automatic aggregation across currencies. If a customer has 200 USD in their USD Global Account and 300 EUR in their EUR Global Account, those figures exist separately. Any consolidation or conversion requires an explicit operation with its own quote, authorization, and confirmation.
+
+## Statement (Extrato)
+
+A **statement** is the history of inflows, outflows, and known states of an account or resource over time. While a balance tells you the current figure, the statement tells you *how you got there* — every movement that contributed to or reduced the balance, along with timestamps and status updates.
+
+The statement is the **source of truth** for what has happened. A pending notification — whether it is a webhook, a push alert, or an in-app message — signals that something may have happened. The statement entry confirms that it did.
+
+<Tip>
+When tracking an operation's outcome, always verify that the corresponding statement entry exists and shows a confirmed status — not just that a notification was received. Notifications can arrive before settlement is final, and in error conditions, a notification may not be followed by a statement entry at all.
+</Tip>
+
+## Reading a statement correctly
+
+A statement entry contains more than an amount and a direction. When you investigate an operation, check:
+
+<Accordion title="Direction: inflow or outflow?">
+An inflow increases the balance; an outflow decreases it. Conversions between currencies will show as a paired outflow from one Global Account and an inflow to another, each with its own status.
+</Accordion>
+
+<Accordion title="Status: confirmed or pending?">
+An entry can appear in the statement before it is final. A pending entry means the network or partner has signaled the operation but has not yet produced a final settlement confirmation. Only a confirmed entry should be treated as complete.
+</Accordion>
+
+<Accordion title="Timestamp: when did each state occur?">
+There are typically at least two timestamps: when the operation was initiated and when the status last changed. For cross-border operations, there may be additional timestamps for each leg of the rail. Use the most recent status-change timestamp, not the initiation timestamp, to assess where an operation stands.
+</Accordion>
+
+<Accordion title="Reference: which operation produced this entry?">
+Each statement entry should reference the originating operation (an inbound transfer, an outbound payment, a conversion). This reference is what you use to correlate the statement entry with a partner's confirmation or an internal log. If you cannot find a reference, escalate — a balance movement without a traceable operation is a data quality issue.
+</Accordion>
+
+## The relationship between balance and statement
+
+The balance is a summary; the statement is the detail behind it. If the balance looks wrong, the statement is where you look first. Work backwards from the current balance using statement entries until you find the entry — or missing entry — that explains the discrepancy.
+
+<Note>
+If a customer reports a balance discrepancy, ask them to check the statement for the relevant Global Account and currency before escalating. Many apparent discrepancies resolve once the customer identifies a pending entry or a movement in a different currency account that they had not noticed.
+</Note>
+
+## Practical checklist when tracking a balance change
+
+<Steps>
+  <Step title="Identify the correct Global Account">
+    Confirm the currency. USD, EUR, and BRL are separate accounts with separate balances.
+  </Step>
+  <Step title="Check the balance status and update time">
+    A balance shown in the UI may be cached. Confirm when it was last refreshed and whether any operation is in flight that would affect it.
+  </Step>
+  <Step title="Find the statement entry">
+    Locate the corresponding statement entry for the expected operation. If it is not there, the operation has not yet produced a confirmed result.
+  </Step>
+  <Step title="Verify the entry status">
+    Confirm the entry is in a settled or confirmed state — not pending. Pending entries are informational, not final.
+  </Step>
+  <Step title="Match to the originating operation">
+    Use the reference in the statement entry to link back to the partner's confirmation or the internal operation record. This is your audit trail.
+  </Step>
+</Steps>

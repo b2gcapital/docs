@@ -1,0 +1,85 @@
+---
+title: "Trepzy Partners: Who Executes Each Part of the Journey"
+sidebarTitle: "Partners"
+description: "What a Trepzy partner is, why we use them, who the current partners are, and what primary and secondary mean — so every team member applies the model consistently."
+---
+
+When a customer opens a Conta Trepzy and starts moving money across borders, the experience looks simple from the outside. Behind it, several specialized companies each handle a distinct part of the journey — document verification, digital-asset custody, banking rail access, and more. This page defines what Trepzy means by "partner," explains why we need them, names the current ones, and draws a clear line between what partners do and what always stays with Trepzy.
+
+<Note>
+  The partner list reflects the current documented state of Trepzy's operations. New partners will be added as Trepzy expands its rails, currencies, and services. When a new partner is onboarded, this page should be updated before the relevant feature is described anywhere else in the knowledge base.
+</Note>
+
+## What "partner" means at Trepzy
+
+In this knowledge base, **a partner is an external company that provides a specific part of a service used by Trepzy.** The word does not mean:
+
+- A shareholder or investor in Trepzy.
+- A member of a customer's own team.
+- A company that sells products or services *through* the Trepzy platform.
+
+Partners exist at the infrastructure layer. The customer interacts with a single Trepzy experience; our team needs to know which company is responsible for each underlying step.
+
+## Why Trepzy uses partners
+
+Certain steps in a financial operation require specializations — or regulated structures — that Trepzy does not hold on its own. Examples:
+
+- **Document and biometric verification** requires a company with the tooling and legal authorization to certify that a document is authentic and that the person presenting it matches it.
+- **Digital-asset custody and movement** requires infrastructure to control values recorded on digital networks, including the key management and signing that such movements demand.
+- **Banking rail access and currency conversion** requires a financial institution or payment provider with the relationships and licenses to receive funds in a given currency and convert or route them to the right destination.
+
+None of these partners do the same thing. Each one can request its own information, impose its own limits, and confirm only its own result. A positive outcome from one partner does not cascade into approval of the full operation — Trepzy assembles the pieces and decides what to communicate to the customer.
+
+## Current partners and their roles
+
+<Warning>
+  A partner confirming their piece of an operation — for example, a successful identity check — does **not** mean the full operation is approved. Each partner approves only what is within their scope. Trepzy combines all results and determines the overall state the customer sees.
+</Warning>
+
+| Partner | Primary role | Important notes |
+|---|---|---|
+| **BlindPay** | Primary financial partner for Trepzy's initial receiving and sending paths; handles conversions between traditional banking rails and digital values | Does not determine who has access to a Conta Trepzy. Does not replace Trepzy's obligation to explain the state of a journey to the customer. Not every BlindPay capability is available to every Trepzy customer — each offering is enabled case by case. |
+| **Pods** | Secondary path for Pix (Brazil's instant-payment system) | "Secondary" describes Trepzy's routing choice for eligible Pix operations — it is not a measure of Pods' overall capabilities as a company. |
+| **Identity verification partner** *(name not yet published in this KB)* | Verifies document authenticity and biometric matches for KYC and KYB flows | A positive result from this partner is a necessary input to Trepzy's approval process, but is not sufficient on its own. Trepzy makes the final access decision. |
+
+<Tip>
+  When documenting a new feature or journey, always specify which partner executes each external step. Don't refer to "the verification partner" or "the financial partner" generically — name the company so the internal record is unambiguous.
+</Tip>
+
+## What "primary" and "secondary" mean
+
+These labels describe **Trepzy's routing choice for a given operation type.** They are not:
+
+- A ranking of partner quality, capability, or reliability.
+- A statement about the partner's market position or product breadth.
+- A permanent designation — routing choices can change as Trepzy's operations evolve.
+
+**Primary** means Trepzy routes eligible operations through that partner by default. **Secondary** means Trepzy routes specific operation types — currently Pix — through that partner instead of (or in addition to) the primary. A customer never needs to know or choose between primary and secondary partners.
+
+## What always stays with Trepzy
+
+Regardless of which partner executes a step, the following responsibilities remain with Trepzy:
+
+<CardGroup cols={2}>
+  <Card title="Customer relationship" icon="user">
+    Trepzy owns the experience the customer sees. The customer initiated their journey with Trepzy, and Trepzy is responsible for keeping them informed — even when a partner is processing something in the background.
+  </Card>
+  <Card title="State reporting" icon="chart-bar">
+    Trepzy collects results from all partners and presents a single, coherent operation state. It must not surface a partner's partial result as a final answer, and must not report "completed" until all necessary steps have confirmed.
+  </Card>
+  <Card title="Compliance decisions" icon="shield-check">
+    Partner checks are inputs. Trepzy makes the final determination about whether an account can be opened, an operation can proceed, or access should be restricted. A partner approving their scope does not override Trepzy's compliance decision.
+  </Card>
+  <Card title="Explaining what happens next" icon="arrow-right">
+    If an operation is pending, blocked, or failed, Trepzy must tell the customer why (to the extent permitted) and what action — if any — they need to take. The customer should never have to contact multiple companies to understand the state of a Trepzy journey.
+  </Card>
+</CardGroup>
+
+## Common mistakes to avoid
+
+When writing about or communicating partner interactions internally, watch for these errors:
+
+- **Conflating a partner's result with Trepzy's decision.** A document check passing is not the same as the account being approved.
+- **Treating "primary" as "better."** BlindPay is the primary financial partner because of Trepzy's current routing architecture — not because it is superior to every alternative for every use case.
+- **Assuming all partner capabilities are active.** A partner may support features that Trepzy has not yet enabled. Only describe what is confirmed for the specific customer segment and operation type you're documenting.
+- **Presenting internal orchestration complexity to the customer.** A map of Trepzy's partner architecture is an internal tool. The customer should see a unified experience, not a list of companies handling their money.

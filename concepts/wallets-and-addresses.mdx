@@ -1,0 +1,73 @@
+---
+title: "Digital Wallets and Addresses: How They Work in Trepzy"
+sidebarTitle: "Wallets"
+description: "Understand what a digital wallet is, what an address is, and how Trepzy manages wallets on behalf of customers using delegated access controls."
+---
+
+When value travels on a digital network, it does not move between bank account numbers — it moves between **addresses** controlled by **wallets**. Understanding what a wallet actually is (and what it is not) is essential for reasoning about authorization, security, and the limits of what any given party can do on behalf of a customer. This page explains the concepts and maps them to how Trepzy uses them in practice.
+
+## Digital Wallet (Carteira Digital)
+
+A **digital wallet** is a tool and a set of controls for receiving, viewing, and authorizing the movement of digital assets. The most important thing to understand about a wallet is what it does **not** do: it does not store money the way a bank account holds a balance. The value itself is recorded on the digital network. The wallet holds the **authorization controls** — specifically, the cryptographic keys — that allow someone to prove ownership and instruct the network to move that value.
+
+Think of it this way: the network is the ledger that says "this address holds X." The wallet is what gives you the ability to sign a valid instruction saying "move X from this address to that one." Without the wallet's authorization mechanism, the value on the network cannot be moved, even if you know the address.
+
+<Note>
+This is why losing access to a wallet's authorization controls is more serious than forgetting a bank password. A bank can reset credentials because it holds the underlying record. On a digital network, if authorization controls are lost and no recovery path was established, the value on that address may become inaccessible. Trepzy's delegated model is designed to avoid putting this burden on customers directly.
+</Note>
+
+## Address (Endereço)
+
+An **address** is the identifier used to receive or send value on a digital network. It is functionally analogous to an account number on a banking rail — you give it to a sender so they know where to direct the value, and you use it to verify that an incoming movement is intended for you.
+
+Important characteristics of addresses:
+
+- An address is **network-specific**. An address on one digital network is not valid on another, even if the asset name looks similar.
+- A wallet can control **multiple addresses**, potentially across multiple networks.
+- Addresses are public — anyone can look up what an address has received or sent on a network. What they cannot do without the wallet's keys is move value out of it.
+
+## How Trepzy manages wallets
+
+Trepzy manages wallets **on behalf of customers** rather than requiring customers to manage their own cryptographic keys. This is done through a model called **delegated access**: the customer grants Trepzy (or the underlying wallet infrastructure partner) a scoped, explicit permission to participate in signing operations under defined conditions.
+
+<Steps>
+  <Step title="Delegated access is established">
+    When the customer's wallet is set up, they grant a delegated permission — a bounded authorization for the system to act on their behalf within defined limits. This is not a blanket permission to do anything; it is a scoped access tied to specific conditions.
+  </Step>
+  <Step title="An operation is requested">
+    When the customer (or an authorized party in a business account) initiates a movement, Trepzy checks whether the requestor has the right to make that request within the Trepzy product.
+  </Step>
+  <Step title="The wallet confirms the instruction">
+    The wallet layer confirms the specific instruction — origin, destination, asset, amount, and network — using the delegated access. If any of those elements change in a material way, the authorization must be revisited.
+  </Step>
+  <Step title="The network records the result">
+    The digital network processes the signed instruction and records the final state. This network confirmation is the definitive outcome.
+  </Step>
+</Steps>
+
+<Tip>
+The delegation model means customers do not need to manage cryptographic keys themselves, which reduces risk and friction. However, the team must understand the delegation boundaries — delegated access is not the same as unlimited proxy control.
+</Tip>
+
+## Delegated access vs. interactive signing
+
+Trepzy's current direction is to use **delegated access** as the primary path for both personal and business wallets, rather than requiring the customer to be interactively present for every signature. An alternative model — **interactive signing** — would require the customer to participate directly in each signing event within the application at the moment it happens.
+
+The delegated model enables smoother flows (including operations that may be pre-authorized within defined parameters), but it comes with obligations: the scope of delegation must be clear, revocation must be possible, and any material change to an operation's parameters requires revisiting the authorization.
+
+<Accordion title="What happens when delegated access needs to be revoked or recovered?">
+The creation, activation, revocation, and recovery of delegated wallet access each have their own steps. Revoking access should immediately prevent new operations from being signed under the old delegation. Recovery paths must be established before they are needed — not improvised when access is lost. The specific mechanics are managed through the wallet infrastructure partner. Confirm the current status of each flow with the relevant team before communicating timelines.
+</Accordion>
+
+## The two conditions that must both be true
+
+There is a critical distinction that prevents authorization errors:
+
+- **Trepzy permission** — the person or system has been granted the right to perform a specific action on a specific Conta Trepzy or Global Account, according to Trepzy's own access rules.
+- **Wallet control** — the wallet authorization mechanism can confirm the specific instruction on the digital network.
+
+These two conditions are **independent**. A person may have Trepzy permission to initiate a transfer but lack the wallet authorization to execute it. Conversely, a party may have technical wallet control without having Trepzy's product permission to act on behalf of another company's account.
+
+<Warning>
+For an operation to proceed, **both conditions must be satisfied and aligned**. Having one without the other is not sufficient. This is especially important for business accounts, where an employee may have a role in Trepzy's permission system but should not be able to move wallet-held value unilaterally without the correct wallet authorization layer also confirming the instruction.
+</Warning>

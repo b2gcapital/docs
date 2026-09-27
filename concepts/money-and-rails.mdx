@@ -1,0 +1,75 @@
+---
+title: "Money, Currencies, and Payment Rails Explained at Trepzy"
+sidebarTitle: "Money & Rails"
+description: "Learn what a currency and a rail mean at Trepzy, how transfers move through different paths, how quotes work, and which partners operate each rail."
+---
+
+Every financial operation at Trepzy involves at least two questions: *in what unit is the value expressed?* and *through what path does it travel?* These are not the same question, and mixing them up leads to wrong expectations about timing, limits, and costs. This page defines **currency**, **rail**, and **quote** as Trepzy uses them internally, and explains how they interact when a customer sends or receives value.
+
+## Currency (Moeda)
+
+A **currency** is the unit in which a value is expressed. When you see BRL, USD, or EUR on a balance or an operation, you are reading the currency. The currency tells you the denomination — it does not tell you how the value travels or who holds it.
+
+Trepzy currently plans to support three currencies in its Global Account product: **BRL**, **USD**, and **EUR**. Each currency has its own Global Account, its own balance, and its own associated rails. Values in different currencies are not combined automatically.
+
+## Rail (Trilho)
+
+A **rail** is the path through which a transfer is made. Each rail has its own rules, its own participants, and its own timing characteristics. Two transfers of the same currency can travel on completely different rails and arrive with different speeds, costs, and confirmation requirements.
+
+Examples of rails relevant to Trepzy operations:
+
+<CardGroup cols={2}>
+  <Card title="Pix" icon="bolt">
+    Brazilian instant payment system. Fast, low-cost, BRL-denominated. Trepzy works with **Pods** as the secondary partner for Pix operations.
+  </Card>
+  <Card title="SWIFT" icon="globe">
+    International interbank messaging network. Used for cross-border fiat transfers. Slower and typically involves correspondent banks.
+  </Card>
+  <Card title="Stablecoin networks" icon="link">
+    Digital rails that carry stablecoin value (e.g., a USD-pegged stablecoin on a blockchain network). Can bridge banking and digital value.
+  </Card>
+  <Card title="Local banking rails" icon="building-columns">
+    Country-specific bank transfer systems outside Brazil. Rules vary by country and are handled through partner infrastructure.
+  </Card>
+</CardGroup>
+
+<Tip>
+Knowing which rail an operation uses is the fastest way to explain why two seemingly similar transfers have different expected completion times or different cost structures. Always identify the rail before making a timing commitment to a customer.
+</Tip>
+
+## Crossing rails and currencies
+
+Some operations involve only one rail and one currency — for example, receiving BRL via Pix into a BRL Global Account. Others cross a rail boundary, a currency boundary, or both. When an operation crosses a boundary, a **conversion step** is introduced. That conversion step has its own rules: its own rate, its own fees, and its own timing.
+
+A common example in Trepzy's cross-border receiving flow: a USD wire arrives via a banking rail, is converted into a stablecoin representation of USD, and travels on a digital rail before the value is settled into the customer's Global Account. The customer may not interact with the intermediate step directly, but the team needs to know it exists in order to understand why a delay or an exception occurred.
+
+<Note>
+The presence of a conversion step does not mean the customer sees a different currency. Trepzy may use digital assets internally as part of a rail without exposing that step in the customer's experience. See [Digital Assets and Networks](/concepts/digital-assets-and-networks) for detail.
+</Note>
+
+## Quote (Cotação)
+
+A **quote** is the set of conditions presented to a customer before they authorize an operation that involves a conversion or a cost. A quote includes:
+
+- The amounts involved (input and output)
+- All applicable costs — Trepzy's portion and any partner portions, shown together
+- The validity period — the window during which those conditions hold
+
+<Warning>
+The customer must see the price **before** they authorize the operation. This is not optional. A quote that expires before authorization is presented must be refreshed; the customer cannot be shown stale conditions and asked to commit.
+</Warning>
+
+The total cost shown in a quote may be composed of multiple parts — Trepzy's margin, a partner processing fee, a network fee — but all of it is displayed as a single transparent figure to the customer. Internally, you will track the components separately; externally, the customer sees the total.
+
+## Partners by rail
+
+| Rail | Primary partner | Notes |
+|------|----------------|-------|
+| Cross-border banking ↔ digital value | **BlindPay** | Main partner for receiving and sending across banking and digital rails |
+| Pix (BRL) | **Pods** | Secondary path in current policy |
+
+"Primary" and "secondary" reflect Trepzy's current routing choices for eligible operations — not a ranking of the partners' overall capabilities.
+
+<Accordion title="Why does BlindPay appear in both banking and digital operations?">
+BlindPay is specifically chosen for its ability to bridge between conventional banking infrastructure and digital value systems. For cross-border operations that require moving value between a bank rail (e.g., SWIFT or local clearing) and a stablecoin network, BlindPay provides the connecting infrastructure. This is why it appears as the main partner for Trepzy's initial financial paths, even though the two sides of that bridge look very different technically.
+</Accordion>

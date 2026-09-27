@@ -1,0 +1,93 @@
+{
+  "projectType": "saas",
+  "projectName": "Trepzy",
+  "projectDescription": "Trepzy is a financial technology platform that unifies cross-border receiving, holding, and moving of value — letting individuals and businesses manage international finances in one place.",
+  "theme": "almond",
+  "primaryColor": "#ef7025",
+  "lightColor": "#eec9bc",
+  "darkColor": "#4fa1ab",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Knowledge Base",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "introduction",
+              "what-is-trepzy",
+              "who-trepzy-is-for",
+              "reading-guide"
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "pages": [
+              "concepts/accounts-and-global-account",
+              "concepts/money-and-rails",
+              "concepts/digital-assets-and-networks",
+              "concepts/wallets-and-addresses",
+              "concepts/balances-and-statements"
+            ]
+          },
+          {
+            "group": "Authorization & Compliance",
+            "pages": [
+              "authorization/how-operations-are-authorized",
+              "authorization/digital-signatures",
+              "authorization/identity-verification",
+              "authorization/kyc-and-kyb"
+            ]
+          },
+          {
+            "group": "Accounts & Roles",
+            "pages": [
+              "accounts/trepzy-account",
+              "accounts/personal-accounts",
+              "accounts/business-accounts",
+              "accounts/team-roles-and-permissions"
+            ]
+          },
+          {
+            "group": "Operations",
+            "pages": [
+              "operations/receiving-value",
+              "operations/sending-value",
+              "operations/tracking-operations",
+              "operations/pending-states"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "reference/glossary",
+              "reference/partners-overview",
+              "reference/status-indicators"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Global Account — multi-currency accounts (USD, EUR, BRL) for receiving and holding international value",
+    "Cross-border orchestration — coordinated receiving, currency exchange, and local transfers in one experience",
+    "Identity verification — KYC and KYB flows for individuals and businesses before financial services are unlocked",
+    "Authorization framework — digital signatures, delegated wallet access, and multi-approver workflows for businesses",
+    "Operation tracking — real-time status of every step from initiation to completion, with clear pending states",
+    "Separation of personal and business accounts — one login, multiple distinct account contexts",
+    "Partner-backed infrastructure — BlindPay for banking/digital-value rails, Pods as secondary Pix path"
+  ],
+  "publicApiSurface": [
+    "Conta Trepzy — the primary account relationship between a customer and Trepzy",
+    "Global Account — currency-specific sub-account (USD, EUR, BRL) with its own receiving details and balance",
+    "Receiving details — account data provided to the payer to route an incoming transfer",
+    "Authorization request — the workflow where a user confirms an outgoing operation",
+    "Digital signature — technical proof linking a user's approval to a specific instruction on a digital network",
+    "Delegated wallet access — pre-authorized permission for a service to sign operations under defined conditions",
+    "KYC flow — identity verification steps for individual customers",
+    "KYB flow — verification steps for business customers including representative and ownership checks",
+    "Operation status — the live state of any in-progress or completed transaction (pending, completed, failed)",
+    "Team permissions — role-based access controls governing which team members can view, prepare, or approve operations"
+  ]
+}

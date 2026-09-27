@@ -1,0 +1,77 @@
+---
+title: "Pending States: What to Do When an Operation Stalls"
+sidebarTitle: "Pending States"
+description: "Understand the types of pending states in Trepzy, why they occur, what customers can do, and how the team handles operations that don't complete immediately."
+---
+
+A pending state is not a failure. It means that an operation is in progress — being processed by Trepzy, awaiting a response from a partner, or waiting for information from the customer. The right response to a pending state is to track the original operation carefully, not to assume it failed and start over.
+
+## Why operations enter a pending state
+
+Operations can enter a pending state for several distinct reasons. Knowing the reason determines what should happen next.
+
+<Accordion title="A partner response is delayed">
+  Financial partners — including BlindPay and others — process operations on their own timelines. Network congestion, internal review queues, or banking-hours constraints can all slow a response. Trepzy continues monitoring; the customer typically does not need to do anything.
+</Accordion>
+
+<Accordion title="A manual review is required">
+  Some operations trigger a compliance or risk review — for example, an identity check that could not be resolved automatically, or a transfer pattern that requires a human assessment. These reviews take time and cannot be bypassed.
+</Accordion>
+
+<Accordion title="The customer needs to provide additional information">
+  If the operation depends on a document, a confirmation, or a piece of information that has not yet been supplied, the operation pauses until that input arrives. In this case, the customer must act — and Trepzy must make that clear.
+</Accordion>
+
+<Accordion title="The network is experiencing delays">
+  Underlying payment networks and digital asset infrastructure can experience delays that are outside Trepzy's control. These resolve in their own time; duplicate operations will not speed them up and will create additional complications.
+</Accordion>
+
+## What the customer should see during a pending state
+
+A pending state should never leave the customer in the dark. Trepzy must surface:
+
+- **A meaningful status message** — not just "processing", but a description of what is being waited on (where this can be shared safely).
+- **A clear next action**, if any is required from the customer. If no action is required, the customer should see that Trepzy is handling it.
+
+If neither of these is visible, the pending state display needs attention.
+
+## What NOT to do when an operation is pending
+
+<Warning>
+Do not repeat the operation. If a send, a deposit request, or any other operation is in a pending state, always check the status of the **original request** before taking any new action. Submitting the same operation a second time — especially for outgoing transfers — can result in the funds being sent twice, with no automatic recovery path.
+</Warning>
+
+## What the team must do
+
+The Trepzy team is responsible for tracking the same request, not for assuming it failed and creating a new one. This applies both to internal investigations and to cases where a customer reports they "haven't seen a result yet."
+
+Duplicate operations — particularly duplicate sends — can cause direct financial harm to customers. The financial risk of a duplicate is far greater than the inconvenience of waiting for a resolution.
+
+When following up internally:
+
+- Identify the operation by its unique identifier.
+- Determine which party currently holds responsibility for moving it forward.
+- Act on that specific operation — do not open a parallel one.
+
+## Recovery paths
+
+Once the cause of a pending state is identified, there is a clear path for each scenario.
+
+<CardGroup cols={2}>
+  <Card title="Waiting for customer input" icon="user">
+    The operation remains in a pending state with a clear prompt for the customer. No action from the team until the customer responds or a deadline is reached.
+  </Card>
+  <Card title="Waiting for a partner" icon="building">
+    Trepzy monitors the partner's response. No customer action is typically needed. The team tracks the operation and escalates if the wait exceeds expected thresholds.
+  </Card>
+  <Card title="Operation ultimately fails" icon="circle-xmark">
+    Trepzy communicates the failure clearly, explains the reason where possible, and provides explicit next steps — whether that is retrying with corrected information or contacting support.
+  </Card>
+  <Card title="Resolution confirmed" icon="circle-check">
+    Once all parties have confirmed their part, Trepzy updates the operation state to reflect the actual outcome. The customer sees a final status with no further action required.
+  </Card>
+</CardGroup>
+
+<Warning>
+Always resolve the original operation before initiating a new one for the same purpose. If the original operation's outcome is still unknown, treat it as potentially live. Starting a second operation before the first is resolved can produce duplicate results that are difficult or impossible to reverse.
+</Warning>
